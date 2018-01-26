@@ -1,15 +1,21 @@
 
+#mac prerequsites
+#brew install portaudio 
+#pip install pyaudio
+
+#windows prerequsites
+#python -m pip install pyaudio
+
+#Linux
+# sudo apt-get install python-pyaudio python3-pyaudio
+
+
+import pyaudio
+import numpy as np
 import re
+
 class Morse:
     def __init__(self, morse = None, words = None):
-        """ take in a message in morse code or plain words,
-            store within the object """
-        if morse is not None and words is not None:
-            raise ValueError('can only pass in words or morse, not both!')
-        if morse is not None:
-            self.read_morse(morse)
-        if words is not None:
-            self.read_words(words)
         self.__letter_to_morse = {'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.',
               'f': '..-.', 'g': '--.', 'h': '....', 'i': '..', 'j': '.---',
               'k': '-.-', 'l': '.-..', 'm': '--', 'n': '-.', 'o': '---',
@@ -19,7 +25,17 @@ class Morse:
               '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..',
               '9': '----.', ' ': '/' } #has a -> z, 1 -> 9 , and / for spaces
         #dict comprehension to reverse the key, value hash
-        self.__morse_to_letter = {v : k for k, v in letter_to_morse.items()}
+        self.__morse_to_letter = {v : k for k, v in self.__letter_to_morse.items()}        
+
+        """ take in a message in morse code or plain words,
+            store within the object """
+        if morse is not None and words is not None:
+            raise ValueError('can only pass in words or morse, not both!')
+        if morse is not None:
+            self.read_morse(morse)
+        if words is not None:
+            self.read_words(words)
+
 
     def read_morse(self, morse):
         """ read morse code into the class as a string.
@@ -118,5 +134,28 @@ morse_to_letter = {v : k for k, v in letter_to_morse.items()}
 inv_map = {v: k for k, v in my_map.items()}
 
 
+p = pyaudio.PyAudio()
+
+volume = 0.5     # range [0.0, 1.0]
+fs = 44100       # sampling rate, Hz, must be integer
+duration = 1.0   # in seconds, may be float
+f = 440.0        # sine frequency, Hz, may be float
+
+# generate samples, note conversion to float32 array
+samples = (np.sin(2*np.pi*np.arange(fs*duration)*f/fs)).astype(np.float32)
+
+# for paFloat32 sample values must be in range [-1.0, 1.0]
+stream = p.open(format=pyaudio.paFloat32,
+                channels=1,
+                rate=fs,
+                output=True)
+
+# play. May repeat with different volume values (if done interactively) 
+stream.write(volume*samples)
+
+stream.stop_stream()
+stream.close()
+
+p.terminate()
 
 
