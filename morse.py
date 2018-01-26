@@ -1,6 +1,6 @@
 
 import re
-class morse:
+class Morse:
     def __init__(self, morse = None, words = None):
         """ take in a message in morse code or plain words,
             store within the object """
@@ -13,12 +13,12 @@ class morse:
         self.__letter_to_morse = {'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.',
               'f': '..-.', 'g': '--.', 'h': '....', 'i': '..', 'j': '.---',
               'k': '-.-', 'l': '.-..', 'm': '--', 'n': '-.', 'o': '---',
-              'p': '.--.', 'o': '--.-', 'r': '.-.', 's': '...', 't': '-',
+              'p': '.--.', 'q': '--.-', 'r': '.-.', 's': '...', 't': '-',
               'u': '..-', 'v': '...-', 'w': '.--', 'x': '-..-', 'y': '-.--',
               'z': '--..', '0': '-----', '1': '.----', '2': '..---', '3': '...--',
               '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..',
-              '9': '----.', ' ': '/', 
-                } #has a -> z, 1 -> 9 , and / for spaces
+              '9': '----.', ' ': '/' } #has a -> z, 1 -> 9 , and / for spaces
+        #dict comprehension to reverse the key, value hash
         self.__morse_to_letter = {v : k for k, v in letter_to_morse.items()}
 
     def read_morse(self, morse):
@@ -30,6 +30,9 @@ class morse:
         morse_words = morse.split('/')
         self.__morse = [x.split() for x in morse_words]
         # pass the list of words to the converter and store words
+        words_from_morse = [[self.__morse_to_letter[letter] for letter in word] 
+                                for word in self.__morse]
+        self.__words = words_from_morse
 
     def read_words(self, words):
         """ read words into the class as a string.
@@ -42,6 +45,9 @@ class morse:
         # store words as a list (words) of lists (letters)
         self.__words = [list(word) for word in word_list]
         # pass list of words to the converter and store morse
+        morse_from_words = [[self.__letter_to_morse[letter] for letter in word] 
+                                for word in self.__words]
+        self.__morse = morse_from_words
 
     @property
     def morse(self):
@@ -72,22 +78,23 @@ class morse:
 test = 'sos, other stuff!'
 
 
-morse_test = morse()
+morse_test = Morse()
 morse_test.words
 morse_test.read_words(test)
 morse_test.words
-morse_test.morse
+morse_test.morse 
+print(morse_test)
 
 
-test2 = '... --- ... / ----'
+test2 = '... --- ... / .----'
 
-morse_test2 = morse()
+morse_test2 = Morse()
 morse_test2.read_morse(test2)
 morse_test2.morse
 morse_test2.words
 
 #iterate dict
-for i,j in morse_dict.items():
+for i,j in morse_to_letter.items():
     print(i,j)
 
 #TODO
@@ -98,7 +105,7 @@ for i,j in morse_dict.items():
 letter_to_morse = {'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.',
               'f': '..-.', 'g': '--.', 'h': '....', 'i': '..', 'j': '.---',
               'k': '-.-', 'l': '.-..', 'm': '--', 'n': '-.', 'o': '---',
-              'p': '.--.', 'o': '--.-', 'r': '.-.', 's': '...', 't': '-',
+              'p': '.--.', 'q': '--.-', 'r': '.-.', 's': '...', 't': '-',
               'u': '..-', 'v': '...-', 'w': '.--', 'x': '-..-', 'y': '-.--',
               'z': '--..', '0': '-----', '1': '.----', '2': '..---', '3': '...--',
               '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..',
