@@ -134,28 +134,42 @@ morse_to_letter = {v : k for k, v in letter_to_morse.items()}
 inv_map = {v: k for k, v in my_map.items()}
 
 
-p = pyaudio.PyAudio()
+class DotDash:
+    def __init__(self):
+        self.p = pyaudio.PyAudio()
 
-volume = 0.5     # range [0.0, 1.0]
-fs = 44100       # sampling rate, Hz, must be integer
-duration = 1.0   # in seconds, may be float
-f = 440.0        # sine frequency, Hz, may be float
+        self.volume = 0.5     # range [0.0, 1.0]
+        self.fs = 44000       # sampling rate, Hz, must be integer
 
-# generate samples, note conversion to float32 array
-samples = (np.sin(2*np.pi*np.arange(fs*duration)*f/fs)).astype(np.float32)
+        self.dash_duration = 1.5
+        self.dot_duration = 0.75   # in seconds, may be float
 
-# for paFloat32 sample values must be in range [-1.0, 1.0]
-stream = p.open(format=pyaudio.paFloat32,
-                channels=1,
-                rate=fs,
-                output=True)
+        f = 440.0        # sine frequency, Hz, may be float
 
-# play. May repeat with different volume values (if done interactively) 
-stream.write(volume*samples)
 
-stream.stop_stream()
-stream.close()
+        # generate samples, note conversion to float32 array
+        self.dot_samples = (np.sin(2*np.pi*np.arange(self.fs*self.dot_duration)*f/fs)).astype(np.float32)
+        self.dash_samples = (np.sin(2*np.pi*np.arange(self.fs*self.dash_duration)*f/fs)).astype(np.float32)
 
-p.terminate()
+
+        # for paFloat32 sample values must be in range [-1.0, 1.0]
+        self.stream = p.open(format=pyaudio.paFloat32,
+                        channels=1,
+                        rate=fs,
+                        output=True)
+
+    def dot(self):
+        self.stream.write(self.volume*self.dot_samples)
+    def dash(self):
+        self.stream.write(self.volume*self.dash_samples)
+
+    def close(self):
+
+        # play. May repeat with different volume values (if done interactively) 
+        self.stream.write(volume*samples)
+        self.stream.stop_stream()
+        self.stream.close()
+
+        self.p.terminate()
 
 
