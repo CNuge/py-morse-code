@@ -113,9 +113,6 @@ morse_test2.words
 for i,j in morse_to_letter.items():
     print(i,j)
 
-#TODO
-# change code to avoid the leak between instances... see the ghost bus chapter for how
-# have the .read_morse() and .read_words() return valueError is no messages passed
 
 
 letter_to_morse = {'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.',
@@ -164,12 +161,14 @@ class DotDash:
         self.stream.write(self.volume*self.dash_samples)
 
     def close(self):
-
         # play. May repeat with different volume values (if done interactively) 
-        self.stream.write(volume*samples)
         self.stream.stop_stream()
         self.stream.close()
-
         self.p.terminate()
 
+
+#TODO
+# have the __repr__ print the morse and the words one over the other
+# have a @property called .send or .say that initiates a dotdash and reads out the morse
+# have the morse pause of the / to distinguish words
 
