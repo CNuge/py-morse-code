@@ -1,7 +1,4 @@
 
-for i,j in morse_dict.items():
-    print(i,j)
-
 import re
 class morse:
     def __init__(self, morse = None, words = None):
@@ -13,7 +10,7 @@ class morse:
             self.read_morse(morse)
         if words is not None:
             self.read_words(words)
-        self. morse_dict = {'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.',
+        self.__letter_to_morse = {'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.',
               'f': '..-.', 'g': '--.', 'h': '....', 'i': '..', 'j': '.---',
               'k': '-.-', 'l': '.-..', 'm': '--', 'n': '-.', 'o': '---',
               'p': '.--.', 'o': '--.-', 'r': '.-.', 's': '...', 't': '-',
@@ -22,6 +19,7 @@ class morse:
               '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..',
               '9': '----.', ' ': '/', 
                 } #has a -> z, 1 -> 9 , and / for spaces
+        self.__morse_to_letter = {v : k for k, v in letter_to_morse.items()}
 
     def read_morse(self, morse):
         """ read morse code into the class as a string.
@@ -75,19 +73,43 @@ test = 'sos, other stuff!'
 
 
 morse_test = morse()
-morse.words #no words... returns <property at 0x10d7c48b8>
-            #i would 
+morse_test.words
 morse_test.read_words(test)
 morse_test.words
+morse_test.morse
+
 
 test2 = '... --- ... / ----'
 
 morse_test2 = morse()
 morse_test2.read_morse(test2)
 morse_test2.morse
+morse_test2.words
 
+#iterate dict
+for i,j in morse_dict.items():
+    print(i,j)
 
 #TODO
 # change code to avoid the leak between instances... see the ghost bus chapter for how
 # have the .read_morse() and .read_words() return valueError is no messages passed
+
+
+letter_to_morse = {'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.',
+              'f': '..-.', 'g': '--.', 'h': '....', 'i': '..', 'j': '.---',
+              'k': '-.-', 'l': '.-..', 'm': '--', 'n': '-.', 'o': '---',
+              'p': '.--.', 'o': '--.-', 'r': '.-.', 's': '...', 't': '-',
+              'u': '..-', 'v': '...-', 'w': '.--', 'x': '-..-', 'y': '-.--',
+              'z': '--..', '0': '-----', '1': '.----', '2': '..---', '3': '...--',
+              '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..',
+              '9': '----.', ' ': '/', 
+                }
+
+
+morse_to_letter = {v : k for k, v in letter_to_morse.items()}
+
+inv_map = {v: k for k, v in my_map.items()}
+
+
+
 
