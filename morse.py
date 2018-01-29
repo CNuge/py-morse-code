@@ -42,9 +42,9 @@ class DotDash:
 
 
 class Morse:
-	""" This class can be used to translate messages between morse code and  alphanumeric encodings
-		The class can also be used to play the morse code sounds associated with the message and
-		read the message alout (mac/linux only)
+	""" This class can be used to translate messages between morse code and alphanumeric encodings.
+		The class can also be used to play the morse code sounds associated with the message (all platforms)
+		and read the message out loud (mac/linux only).
 	"""
 	def __init__(self, morse = None, words = None):
 		self.__letter_to_morse = {'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.',
