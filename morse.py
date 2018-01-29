@@ -4,37 +4,35 @@ import re
 import time
 
 class DotDash:
-	""" this class initiates a pyaudio session and can be used to produce the
-		morse code output sounds. example:
+	""" This class initiates a pyaudio session and can be used to produce the
+		morse code output sounds. 
+		Example:
 		sound = DotDash()
 		sound.dot()
-		sound.dash() """
+		sound.dash() 
+	"""
 	def __init__(self):
 		self.p = pyaudio.PyAudio()
-
 		self.volume = 0.4	 # range [0.0, 1.0]
 		self.fs = 44000	   # sampling rate, Hz, must be integer
-
 		self.dash_duration = 1.5
 		self.dot_duration = 0.75   # in seconds, may be float
-
 		self.f = 400.0		# sine frequency, Hz, may be float
-
 		# generate samples, note conversion to float32 array
-		self.dot_samples = (np.sin(2*np.pi*np.arange(self.fs*self.dot_duration)*self.f/self.fs)).astype(np.float32)
-		self.dash_samples = (np.sin(2*np.pi*np.arange(self.fs*self.dash_duration)*self.f/self.fs)).astype(np.float32)
-
+		self.dot_samples = (np.sin(2 * np.pi * np.arange(self.fs * self.dot_duration) * self.f / self.fs)).astype(np.float32)
+		self.dash_samples = (np.sin(2 * np.pi * np.arange(self.fs * self.dash_duration) * self.f / self.fs)).astype(np.float32)
 
 		# for paFloat32 sample values must be in range [-1.0, 1.0]
-		self.stream = self.p.open(format=pyaudio.paFloat32,
-						channels=1,
-						rate=self.fs,
-						output=True)
-
+		self.stream = self.p.open(format = pyaudio.paFloat32,
+									channels = 1,
+									rate=self.fs,
+									output=True)
+	
 	def dot(self):
-		self.stream.write(self.volume*self.dot_samples)
+		self.stream.write(self.volume * self.dot_samples)
+	
 	def dash(self):
-		self.stream.write(self.volume*self.dash_samples)
+		self.stream.write(self.volume * self.dash_samples)
 
 	def close(self):
 		# play. May repeat with different volume values (if done interactively) 
@@ -44,6 +42,10 @@ class DotDash:
 
 
 class Morse:
+	""" This class can be used to translate between strings of morse code and their letter/number euqivalents
+		The class can also be used to play the morse code sounds associated with the message and
+		read the message alout (mac/linux only)
+	"""
 	def __init__(self, morse = None, words = None):
 		self.__letter_to_morse = {'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.',
 			  'f': '..-.', 'g': '--.', 'h': '....', 'i': '..', 'j': '.---',
