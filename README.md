@@ -11,8 +11,7 @@
 
 
 ## The Morse class does the following:
-
-	- reads in string of words or morse code and allow for translation between the two
+	- read in string of words or morse code and allow for translation between the two
 	- provides a transmit function to play the morse code version of the message out loud
 	- lets you easily print the words and corresponding morse side by side
 	- mac/linux only: uses the internal say command to read the message out loud
@@ -40,3 +39,4 @@ optional - to make the .speak() function work:
 	sudo apt-get install gnustep-gui-runtime
 
 ## Other dependencies
+numpy
