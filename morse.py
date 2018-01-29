@@ -1,14 +1,3 @@
-
-#mac prerequsites
-#brew install portaudio 
-#pip install pyaudio
-
-#windows prerequsites
-#python -m pip install pyaudio
-
-#Linux
-# sudo apt-get install python-pyaudio python3-pyaudio
-
 import pyaudio
 import numpy as np
 import re
@@ -19,7 +8,7 @@ class DotDash:
 		morse code output sounds. example:
 		sound = DotDash()
 		sound.dot()
-		sound.dash()"""
+		sound.dash() """
 	def __init__(self):
 		self.p = pyaudio.PyAudio()
 
@@ -30,7 +19,6 @@ class DotDash:
 		self.dot_duration = 0.75   # in seconds, may be float
 
 		self.f = 400.0		# sine frequency, Hz, may be float
-
 
 		# generate samples, note conversion to float32 array
 		self.dot_samples = (np.sin(2*np.pi*np.arange(self.fs*self.dot_duration)*self.f/self.fs)).astype(np.float32)
@@ -147,67 +135,5 @@ class Morse:
 	def __repr__(self):
 		""" when print is called, show the morse code underneath the words """
 		return f'message: {self.words}\n{self.morse}'
-
-
-test = 'sos, other stuff!'
-
-
-morse_test = Morse()
-morse_test.words
-morse_test.read_words(test)
-morse_test.words #show the words
-morse_test.morse #show the morse code
-print(morse_test) #show the pretty print version of the message
-morse_test.transmit() #play message in morse code
-morse_test.speak() #say the message
-
-
-test2 = '... --- ... / .----'
-morse_test2 = Morse()
-morse_test2.read_morse(test2)
-morse_test2.morse
-morse_test2.words
-morse_test2.transmit()
-print(morse_test2)
-
-
-test3 = 'cam nugent'
-morse_test3 = Morse(words = test3)
-morse_test3.words
-print(morse_test3)
-
-
-test4 = '-.-. .- -- / -. ..- --. . -. -'
-morse_test4 = Morse()
-morse_test4.read(morse=test4)
-print(morse_test4)
-
-
-
-
-
-letter_to_morse = {'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.',
-			  'f': '..-.', 'g': '--.', 'h': '....', 'i': '..', 'j': '.---',
-			  'k': '-.-', 'l': '.-..', 'm': '--', 'n': '-.', 'o': '---',
-			  'p': '.--.', 'q': '--.-', 'r': '.-.', 's': '...', 't': '-',
-			  'u': '..-', 'v': '...-', 'w': '.--', 'x': '-..-', 'y': '-.--',
-			  'z': '--..', '0': '-----', '1': '.----', '2': '..---', '3': '...--',
-			  '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..',
-			  '9': '----.', ' ': '/', 
-				}
-
-
-morse_to_letter = {v : k for k, v in letter_to_morse.items()}
-
-inv_map = {v: k for k, v in my_map.items()}
-
-
-#iterate dict
-for i,j in morse_to_letter.items():
-	print(i,j)
-
-sound = DotDash()
-sound.dot()
-sound.dash()
 
 
