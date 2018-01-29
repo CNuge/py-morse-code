@@ -61,7 +61,7 @@ class Morse:
 		self.read(morse, words)
 
 	def read(self, morse = None, words = None):
-		""" take in a message in morse code or plain words,
+		""" take in a message in morse or alphanumeric encoding,
 			store within the object """
 		if morse is not None and words is not None:
 			raise ValueError('can only pass in words or morse, not both!')
@@ -73,7 +73,7 @@ class Morse:
 	def read_morse(self, morse):
 		""" read morse code into the class as a string.
 			format should be spaces between letters,
-			/ between words:
+			forward slash / between words:
 			'... --- ... ' #sos
 			'-.-. .- -- / -. ..- --. . ' #cam nuge """
 		morse_words = morse.split('/')
@@ -130,7 +130,8 @@ class Morse:
 			time.sleep(.2) #wait a fifth of a second between each command
 
 	def speak(self):
-		""" for mac os only, this function speaks the morse code message """
+		""" for mac os only (or linux if say installation followed), 
+			this function speaks the alphanumeric encoding of the message """
 		from os import system
 		system(f'say {self.words}')
 
