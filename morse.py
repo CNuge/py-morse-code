@@ -110,7 +110,7 @@ class Morse:
 	def morse(self):
 		""" make the morse code callable via x.morse, show the formatted string """
 		try:
-			return '/'.join([' '.join(x) for x in self.__morse])
+			return ' / '.join([' '.join(x) for x in self.__morse])
 		except:
 			raise ValueError('no message stored in the object')
 	@property
@@ -125,13 +125,17 @@ class Morse:
 		#initiate the sound class instance
 		sound = DotDash()
 
-		time.sleep(.25) #wait a quarter of a second between dots
+		for i in self.morse:
+			if i == '.':
+				sound.dot()
+			elif i == '-':
+				sound.dash()
+			elif i == ' ' or i == '/':
+				""" make total of .4 second pause for letter breaks
+					and .6 seconds for word breaks """
+				time.sleep(.2)
 
-		#terminate the sound class
-		sound.close()
-	#make properties
-	# so that someone can go class.morse, or class.words and it will give
-	# out a pretty represented version of the data in the class
+			time.sleep(.2) #wait a fifth of a second between each command
 
 	# make a repr class that accounts for both the morse and the words
 	# so that it will print the words and the morse side by side...
@@ -148,7 +152,7 @@ morse_test.read_words(test)
 morse_test.words
 morse_test.morse 
 print(morse_test)
-
+morse_test.transmit()
 
 test2 = '... --- ... / .----'
 
@@ -156,6 +160,7 @@ morse_test2 = Morse()
 morse_test2.read_morse(test2)
 morse_test2.morse
 morse_test2.words
+morse_test2.transmit()
 
 #iterate dict
 for i,j in morse_to_letter.items():
