@@ -5,7 +5,6 @@
 - write the readme with examples of loading in the data via the different methods
 - write the dependencies into the readme file
 - give some examples in the readme
-- make repository public
 - explain it in a blog post, highlight the special class methods
 
 
