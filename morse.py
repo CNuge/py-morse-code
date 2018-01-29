@@ -68,6 +68,9 @@ class Morse:
 		#dict comprehension to reverse the key, value hash
 		self.__morse_to_letter = {v : k for k, v in self.__letter_to_morse.items()}		
 
+		self.read(morse, words)
+
+	def read(self, morse = None, words = None):
 		""" take in a message in morse code or plain words,
 			store within the object """
 		if morse is not None and words is not None:
@@ -76,7 +79,6 @@ class Morse:
 			self.read_morse(morse)
 		if words is not None:
 			self.read_words(words)
-
 
 	def read_morse(self, morse):
 		""" read morse code into the class as a string.
@@ -122,7 +124,7 @@ class Morse:
 			raise ValueError('no message stored in the object')
 
 	def transmit(self):
-		#initiate the sound class instance
+		""" when called, this function makes the sound for the morse code message"""
 		sound = DotDash()
 
 		for i in self.morse:
@@ -137,11 +139,15 @@ class Morse:
 
 			time.sleep(.2) #wait a fifth of a second between each command
 
-	# make a repr class that accounts for both the morse and the words
-	# so that it will print the words and the morse side by side...
-	# possibly include separate or with the repr:
-	# make a 'say' and a 'telegraph' function to make python say the message or
-	# do the beeps that correspond to the message
+	def speak(self):
+		""" for mac os only, this function speaks the morse code message """
+		from os import system
+		system(f'say {self.words}')
+
+	def __repr__(self):
+		""" when print is called, show the morse code underneath the words """
+		return f'message: {self.words}\n{self.morse}'
+
 
 test = 'sos, other stuff!'
 
@@ -149,22 +155,34 @@ test = 'sos, other stuff!'
 morse_test = Morse()
 morse_test.words
 morse_test.read_words(test)
-morse_test.words
-morse_test.morse 
-print(morse_test)
-morse_test.transmit()
+morse_test.words #show the words
+morse_test.morse #show the morse code
+print(morse_test) #show the pretty print version of the message
+morse_test.transmit() #play message in morse code
+morse_test.speak() #say the message
+
 
 test2 = '... --- ... / .----'
-
 morse_test2 = Morse()
 morse_test2.read_morse(test2)
 morse_test2.morse
 morse_test2.words
 morse_test2.transmit()
+print(morse_test2)
 
-#iterate dict
-for i,j in morse_to_letter.items():
-	print(i,j)
+
+test3 = 'cam nugent'
+morse_test3 = Morse(words = test3)
+morse_test3.words
+print(morse_test3)
+
+
+test4 = '-.-. .- -- / -. ..- --. . -. -'
+morse_test4 = Morse()
+morse_test4.read(morse=test4)
+print(morse_test4)
+
+
 
 
 
@@ -184,12 +202,12 @@ morse_to_letter = {v : k for k, v in letter_to_morse.items()}
 inv_map = {v: k for k, v in my_map.items()}
 
 
+#iterate dict
+for i,j in morse_to_letter.items():
+	print(i,j)
+
 sound = DotDash()
 sound.dot()
 sound.dash()
 
-#TODO
-# have the __repr__ print the morse and the words one over the other
-# have a @property called .send or .say that initiates a dotdash and reads out the morse
-# have the morse pause of the / to distinguish words
 
