@@ -42,7 +42,7 @@ class DotDash:
 
 
 class Morse:
-	""" This class can be used to translate between strings of morse code and their letter/number euqivalents
+	""" This class can be used to translate messages between morse code and  alphanumeric encodings
 		The class can also be used to play the morse code sounds associated with the message and
 		read the message alout (mac/linux only)
 	"""
