@@ -10,23 +10,37 @@ class MorseCodeTests(unittest.TestCase):
 		""" this sets up a class through each of the initiation methods, making
 			sure they all work """
 		self.morse_test1 = Morse(morse = '... --- ... / .----')
-		self.morse_test2 = Morse(words = 'cam was here')
+		self.morse_test2 = Morse(words = 'You... never did! - The Kenosha Kid')
 		self.morse_test3 = Morse()
-		self.morse_test3.read_words('You... never did! - The Kenosha Kid')
-		self.morse_test3 = Morse()
+		self.morse_test3.read_words('cam was here')
+		self.morse_test4 = Morse()
 		self.morse_test4.read_morse('-.-. .- -- / -. ..- --. . -. -')
 		self.morse_test5 = Morse()
-		self.morse_test5 = read(morse = '... --- ...')
+		self.morse_test5.read(morse = '... --- ...')
 
 	
 	def test_encoding(self):
-		self.assertEqual(self.morse_test1.words, self._primary_test)
+		self.assertEqual(self.morse_test1.words, 'sos 1')
+		self.assertEqual(self.morse_test1.morse, '... --- ... / .----')
 	
-	def test_secondary_output(self):
-		self.assertEqual(self._secondary_example, self._secondary_test)
+	def test_properties(self):
+		with self.assertRaises(AttributeError):
+			self.morse_test1.words = 'change the words'
+
+		with self.assertRaises(AttributeError):
+			self.morse_test1.morse = '... --- ...'
+
+	def test_repr(self):
+		self.assertEqual(self.morse_test2.__repr__(), 'message: you never did the kenosha kid\n-.-- --- ..- / -. . ...- . .-. / -.. .. -.. / - .... . / -.- . -. --- ... .... .- / -.- .. -..' )
 
 
-	self.assertRaises(ValueError, match_snp, 'F')
+test_test = MorseCodeTests()
+test_test.setUpClass()
+test_test.test_encoding()
+test_test.test_properties()
+test_test.test_repr()
+
+self.assertRaises(ValueError, match_snp, 'F')
 # turn the working examples below into tests, also use them in the readme file for examples
 
 test = 'sos, we are going down!'
