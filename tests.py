@@ -1,6 +1,32 @@
-from morse import Morse
+from morse import Morse, DotDash
+import unittest
 
 
+
+class MorseCodeTests(unittest.TestCase):
+	""" """
+	@classmethod
+	def setUpClass(self):
+		""" this sets up a class through each of the initiation methods, making
+			sure they all work """
+		self.morse_test1 = Morse(morse = '... --- ... / .----')
+		self.morse_test2 = Morse(words = 'cam was here')
+		self.morse_test3 = Morse()
+		self.morse_test3.read_words('You... never did! - The Kenosha Kid')
+		self.morse_test3 = Morse()
+		self.morse_test4.read_morse('-.-. .- -- / -. ..- --. . -. -')
+		self.morse_test5 = Morse()
+		self.morse_test5 = read(morse = '... --- ...')
+
+	
+	def test_encoding(self):
+		self.assertEqual(self.morse_test1.words, self._primary_test)
+	
+	def test_secondary_output(self):
+		self.assertEqual(self._secondary_example, self._secondary_test)
+
+
+	self.assertRaises(ValueError, match_snp, 'F')
 # turn the working examples below into tests, also use them in the readme file for examples
 
 test = 'sos, we are going down!'
@@ -67,3 +93,7 @@ sound = DotDash()
 sound.dot()
 sound.dash()
 
+
+if __name__ == '__main__':
+
+	unittest.main()
