@@ -2,10 +2,10 @@
 ## A morse code class for translation between morse and alphanumeric encodings which supports text and audio message representation
 
 ## The Morse class does the following:
-- read in string of words or morse code and allow for translation between the two
-- provides a transmit function to play the morse code version of the message out loud
-- lets you easily print the words and corresponding morse side by side
-- mac/linux only: uses the internal say command to read the message out loud
+- Reads in string of words or morse code and allows for translation between the two.
+- Provides a transmit function to play the audio morse code version of the message.
+- Lets you easily print the words and corresponding morse side by side.
+- mac/linux only: Uses the unix `say` command to read the message out loud.
 
 ## Limitations:
 - If the message is input as a word, all punctuation will be removed.
