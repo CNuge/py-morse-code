@@ -1,7 +1,7 @@
 import numpy as np
 import re
 import time
-import pyaudio #this is here to avoid the error is causes in travis-ci unittests
+import pyaudio 
 
 class DotDash:
 	""" This class initiates a pyaudio session and can be used to produce the
