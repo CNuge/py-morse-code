@@ -76,19 +76,25 @@ will return:
 ```
 
 
-# Audio setup
+# Audio dependencies setup
 The following must be installed in order to use the transmit function which plays back the morse code
 ### mac 
+```
 brew install portaudio 
 pip install pyaudio
-
+```
 ### windows 
+```
 python -m pip install pyaudio
+```
 
 ### Linux
+```
 	sudo apt-get install python-pyaudio python3-pyaudio
+```
 optional - to make the .speak() function work:
+```
 	sudo apt-get install gnustep-gui-runtime
-
+```
 ## Other dependencies
 numpy
