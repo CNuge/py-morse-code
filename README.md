@@ -33,6 +33,35 @@
 	morse_test = Morse(morse = '- .... .. ... / .. ... / .- / - . ... -')
 
 ```
+
+	- Once a morse class is instantiated, words or morse can be read in using the following functions. Note if there is already a message stored in the class then these functions will overwrite them!
+```
+	morse_test.read(morse = '- .... .. ... / .. ... / .- / - . ... -')
+
+	morse_test.read(words = 'This is a test')
+	
+	#or alternatively
+
+	morse_test.read_morse('- .... .. ... / .. ... / .- / - . ... -')
+
+	morse_test.read_words('This is a test')
+
+```
+
+	- The morse and alphanumeric encodings of the message can then respectively be called using:
+```
+	morse_test.morse
+	morse_test.words
+```
+
+	- When print is called on the object, it will return both encodings of the message
+```
+```
+	- You can also hear the audio of the message in morse code...
+
+	CONTINUE
+
+
 # Audio setup
 The following must be installed in order to use the transmit function which plays back the morse code
 ### mac 
