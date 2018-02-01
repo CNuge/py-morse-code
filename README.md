@@ -67,7 +67,7 @@ will return:
 	message: this is a test
 	- .... .. ... / .. ... / .- / - . ... -
 ```
-- The class also contains methods for returning the corresponding audio for the morse (all platforms) and alphanumeric encodings.
+- The class also contains methods for returning the corresponding audio for the morse (all platforms) and alphanumeric encodings (mac/linux).
 ```
 	morse_test.transmit() #returns the tones corresponding to the morse code
 	
