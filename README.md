@@ -90,11 +90,12 @@ python -m pip install pyaudio
 
 ### Linux
 ```
-	sudo apt-get install python-pyaudio python3-pyaudio
+sudo apt-get install python-pyaudio python3-pyaudio
 ```
 optional - to make the .speak() function work:
 ```
-	sudo apt-get install gnustep-gui-runtime
+sudo apt-get install gnustep-gui-runtime
 ```
 ## Other dependencies
-numpy
+You will need to have `numpy` installed as well
+`pip install numpy`
