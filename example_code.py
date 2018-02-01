@@ -32,9 +32,9 @@ print(morse_test3)
 morse_test3.transmit()
 
 
-test4 = '-.-. .- -- / -. ..- --. . -. -'
+test4 = 'a b c d e f g h i j k l m n o p q r s t u v w x y z 1 2 3 4 5 6 7 8 9 '
 morse_test4 = Morse()
-morse_test4.read(morse=test4)
+morse_test4.read(words=test4)
 print(morse_test4)
 
 
