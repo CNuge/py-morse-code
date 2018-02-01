@@ -46,23 +46,23 @@ Once a morse class is instantiated, words or morse can be read in using the foll
 
 ```
 
-- Once you have read a message in to the class the morse and alphanumeric encodings of the message can respectively be called using the .morse and .words properties.
+Once you have read a message in to the class the morse and alphanumeric encodings of the message can respectively be called using the .morse and .words properties.
 ```
 	morse_test.morse
 	
 	morse_test.words
 ```
 
-- When print is called on the object, it will return both encodings of the message
+When print is called on the object, it will return both encodings of the message
 ```
 	print(morse_test)
 ```
-will return:
+which will return:
 ```
 	message: this is a test
 	- .... .. ... / .. ... / .- / - . ... -
 ```
-- The class also contains methods for returning the corresponding audio for the morse (all platforms) and alphanumeric encodings (mac/linux).
+The class also contains methods for returning the corresponding audio for the morse (all platforms) and alphanumeric encodings (mac/linux).
 ```
 	morse_test.transmit() #returns the tones corresponding to the morse code
 	
