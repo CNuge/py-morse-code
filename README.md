@@ -1,12 +1,9 @@
 # TO DO:
 
-- write the unit tests for the class
-- make the travis.yml file with dependencies, call tests.py
 - write the readme with examples of loading in the data via the different methods
 - write the dependencies into the readme file
 - give some examples in the readme
 - explain it in a blog post, highlight the special class methods
-
 
 
 ## The Morse class does the following:
@@ -21,8 +18,21 @@
 		this could be a useful addition if made to be optional
 	- the speak command is performed using the mac/linux 'say' command so not usable on windows
 
+## Morse syntax
+	- for use in this class, letters in a given word are separated by a space, and words are separated by a forward slash /. Dot are periods and dashes are hyphens.
+	- so the string for `'sos'` would be `'... --- ...'` and the string for `'sos cam'` would be `... --- ... / -.-. .- --'`
 
+## How to use it
+	- The `Morse` class can be used in several different ways after it is first imported into the current session via `from morse import Morse`
+	- The an empty class instance can initiated, or the data can be read in during initiation using the `morse=` or `words=` arguments (only one at a time)
 
+```
+	morse_test = Morse() # an empty class message that can be passed data later
+	#or
+	morse_test = Morse(words = 'This is a test')
+	morse_test = Morse(morse = '- .... .. ... / .. ... / .- / - . ... -')
+
+```
 # Audio setup
 The following must be installed in order to use the transmit function which plays back the morse code
 ### mac 
