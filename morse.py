@@ -1,5 +1,5 @@
-import pyaudio
 import numpy as np
+import pyaudio
 import re
 import time
 

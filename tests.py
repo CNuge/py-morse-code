@@ -1,5 +1,6 @@
 from morse import Morse, DotDash
 import unittest
+import pyaudio
 
 class MorseCodeTests(unittest.TestCase):
 	""" unit tests for the reading, translation and representation of the
@@ -25,7 +26,7 @@ class MorseCodeTests(unittest.TestCase):
 	
 	def test_double_pass(self):
 		with self.assertRaises(ValueError):
-			self.morse_test6.read(words= 'we are passing two things ', morse = '... --- ...')
+			self.morse_test5.read(words= 'we are passing two things ', morse = '... --- ...')
 
 	def test_properties(self):
 		""" make sure we can't overwrite the stored strings """
