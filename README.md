@@ -23,52 +23,52 @@ The `Morse` class can be used in several different ways after it is first import
 `from morse import Morse`.An empty class instance can initiated, or the data can be read in during initiation using the `morse=` or `words=` arguments (only one of the two can be passed in at a time!)
 
 ```
-	morse_test = Morse() # an empty class message that can be passed data later
-	
-	#OR
-	
-	morse_test = Morse(words = 'This is a test')
-	
-	morse_test = Morse(morse = '- .... .. ... / .. ... / .- / - . ... -')
+morse_test = Morse() # an empty class message that can be passed data later
+
+#OR
+
+morse_test = Morse(words = 'This is a test')
+
+morse_test = Morse(morse = '- .... .. ... / .. ... / .- / - . ... -')
 
 ```
 
 Once a morse class is instantiated, words or morse can be read in using the following functions. The two syntaxes are equivalent so its a matter of style which you choose. Note if there is already a message stored in the class then these functions will overwrite them!
 ```
-	morse_test.read(morse = '- .... .. ... / .. ... / .- / - . ... -')
+morse_test.read(morse = '- .... .. ... / .. ... / .- / - . ... -')
 
-	morse_test.read(words = 'This is a test')
-	
-	#or alternatively
+morse_test.read(words = 'This is a test')
 
-	morse_test.read_morse('- .... .. ... / .. ... / .- / - . ... -')
+#or alternatively
 
-	morse_test.read_words('This is a test')
+morse_test.read_morse('- .... .. ... / .. ... / .- / - . ... -')
+
+morse_test.read_words('This is a test')
 
 ```
 
 Once you have read a message in to the class the morse and alphanumeric encodings of the message can respectively be called using the .morse and .words properties.
 ```
-	morse_test.morse
-	
-	morse_test.words
+morse_test.morse
+
+morse_test.words
 ```
 
 When print is called on the object, it will return both encodings of the message
 ```
-	print(morse_test)
+print(morse_test)
 ```
 which will return:
 ```
-	message: this is a test
-	- .... .. ... / .. ... / .- / - . ... -
+message: this is a test
+- .... .. ... / .. ... / .- / - . ... -
 ```
 The class also contains methods for returning the corresponding audio for the morse (all platforms) and alphanumeric encodings (mac/linux).
 ```
-	morse_test.transmit() #returns the tones corresponding to the morse code
-	
-	morse_test.speak() #this uses the unix say command to read the message 
-	#.speak() is mac/linux only... and you need to follow the instructions below!
+morse_test.transmit() #returns the tones corresponding to the morse code
+
+morse_test.speak() #this uses the unix say command to read the message 
+#.speak() is mac/linux only... and you need to follow the instructions below!
 ```
 
 
