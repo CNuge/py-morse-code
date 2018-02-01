@@ -7,16 +7,16 @@
 
 
 ## The Morse class does the following:
-	- read in string of words or morse code and allow for translation between the two
-	- provides a transmit function to play the morse code version of the message out loud
-	- lets you easily print the words and corresponding morse side by side
-	- mac/linux only: uses the internal say command to read the message out loud
+- read in string of words or morse code and allow for translation between the two
+- provides a transmit function to play the morse code version of the message out loud
+- lets you easily print the words and corresponding morse side by side
+- mac/linux only: uses the internal say command to read the message out loud
 
 ## limitations:
-	- if the message is input as a word, all punctuation will be removed
-	- the 'stop' to indicate the end of a sentence is not yet coded in
-		this could be a useful addition if made to be optional
-	- the speak command is performed using the mac/linux 'say' command so not usable on windows
+- if the message is input as a word, all punctuation will be removed
+- the 'stop' to indicate the end of a sentence is not yet coded in
+	this could be a useful addition if made to be optional
+- the speak command is performed using the mac/linux 'say' command so not usable on windows
 
 ## Morse syntax
 - for use in this class, letters in a given word are separated by a space, and words are separated by a forward slash /. Dot are periods and dashes are hyphens.
