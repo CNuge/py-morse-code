@@ -1,5 +1,4 @@
 import numpy as np
-import pyaudio
 import re
 import time
 
@@ -11,6 +10,8 @@ class DotDash:
 		sound.dot()
 		sound.dash() 
 	"""
+	import pyaudio #this is here to avoid the error is causes in travis-ci unittests
+
 	def __init__(self):
 		self.p = pyaudio.PyAudio()
 		self.volume = 0.4	 # range [0.0, 1.0]
