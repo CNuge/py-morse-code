@@ -1,4 +1,4 @@
-from morse import Morse, DotDash
+from morse import Morse
 import unittest
 
 class MorseCodeTests(unittest.TestCase):
