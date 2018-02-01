@@ -1,1 +1,6 @@
+<<<<<<< HEAD
 numpy==1.12.1
+=======
+numpy=1.12.1
+pyaudio=0.2.11
+>>>>>>> parent of 47fbc4f... requirements

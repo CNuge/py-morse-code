@@ -1,6 +1,5 @@
 from morse import Morse, DotDash
 import unittest
-import pyaudio
 
 class MorseCodeTests(unittest.TestCase):
 	""" unit tests for the reading, translation and representation of the
