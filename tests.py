@@ -40,14 +40,6 @@ class MorseCodeTests(unittest.TestCase):
 			when print(object) is called. """
 		self.assertEqual(self.morse_test2.__repr__(), 'message: you never did the kenosha kid\n-.-- --- ..- / -. . ...- . .-. / -.. .. -.. / - .... . / -.- . -. --- ... .... .- / -.- .. -..' )
 
-#for dev
-#test_test = MorseCodeTests()
-#test_test.setUpClass()
-#test_test.test_double_pass()
-#test_test.test_encoding()
-#test_test.test_properties()
-#test_test.test_repr()
-
 if __name__ == '__main__':
 
 	unittest.main()
