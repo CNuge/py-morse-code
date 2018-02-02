@@ -1,5 +1,5 @@
-# py-morse: A morse code translator class
-## A morse code class for translation between morse and alphanumeric encodings which supports text and audio message representation
+# py-morse
+## A morse code class object for translation between morse and alphanumeric encodings, which supports both text and audio message representation
 [![Build Status](https://travis-ci.org/CNuge/py-morse-code.svg?branch=master)](https://travis-ci.org/CNuge/py-morse-code)
 
 ## The Morse class does the following:
