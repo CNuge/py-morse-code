@@ -20,7 +20,7 @@
 
 ## How to use it
 The `Morse` class can be used in several different ways after it is first imported into the current session via
-`from morse import Morse`.An empty class instance can initiated, or the data can be read in during initiation using the `morse=` or `words=` arguments (only one of the two can be passed in at a time!)
+`from morse import Morse`. An empty class instance can initiated, or the data can be read in during initiation using the `morse=` or `words=` arguments (only one of the two can be passed in at a time). `example_code.py` provides some additional example uses cases.
 
 ```
 morse_test = Morse() # an empty class message that can be passed data later
@@ -33,7 +33,7 @@ morse_test = Morse(morse = '- .... .. ... / .. ... / .- / - . ... -')
 
 ```
 
-Once a morse class is instantiated, words or morse can be read in using the following functions. The two syntaxes are equivalent so its a matter of style which you choose. Note if there is already a message stored in the class then these functions will overwrite them!
+Once the Morse class is instantiated, words or morse can be read in using the following functions. The two syntaxes are equivalent so its a matter of style which you choose. Note if there is already a message stored in the class then these functions will overwrite it!
 ```
 morse_test.read(morse = '- .... .. ... / .. ... / .- / - . ... -')
 
@@ -65,15 +65,15 @@ message: this is a test
 ```
 The class also contains methods for returning the corresponding audio for the morse (all platforms) and alphanumeric encodings (mac/linux).
 ```
-morse_test.transmit() #returns the tones corresponding to the morse code
+morse_test.transmit() # returns the tones corresponding to the morse code
 
-morse_test.speak() #this uses the unix say command to read the message 
-#.speak() is mac/linux only... and you need to follow the instructions below!
+morse_test.speak() # this uses the unix say command to read the message 
+#.speak() is mac/linux only... and you need to follow the instructions below to get it running on linux
 ```
 
 
 # Audio dependencies setup
-The following must be installed in order to use the transmit function which plays back the morse code
+The following must be installed in order to use the transmit function which plays back the morse code.
 ### mac 
 ```
 brew install portaudio 
@@ -93,5 +93,5 @@ optional - to make the .speak() function work:
 sudo apt-get install gnustep-gui-runtime
 ```
 ## Other dependencies
-You will need to have `numpy` installed as well
+You will need to have `numpy` installed as well (all platforms).
 `pip install numpy`
