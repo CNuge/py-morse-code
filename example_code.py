@@ -1,10 +1,10 @@
 # here is some example code!
-from morse import Morse, DotDash
+from morse import Morse, DotDash #assuming you are working in the same directory as the morse.py file (or it is on the search path)
 
 test = 'sos, we are going down!'
 morse_test = Morse()
 morse_test.words #this throws a value error, no message yet
-morse_test.read_words(test)
+morse_test.read_words(test) # read in the string test
 morse_test.words #show the words
 morse_test.morse #show the morse code
 print(morse_test) #show the pretty print version of the message
