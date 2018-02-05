@@ -15,7 +15,7 @@
 - The speak command is performed using the mac/linux 'say' command so not usable on windows.
 
 ## Morse syntax
-- For use in this class, letters in a given word are separated by a space, and words are separated by a forward slash /. Dot are periods and dashes are hyphens.
+- For use in this class, letters in a given word are separated by a space, and words are separated by a forward slash `/` character. Dots are `.` periods and dashes are `-` hyphens.
 - so the string for `'sos'` would be `'... --- ...'` and the string for `'sos cam'` would be `... --- ... / -.-. .- --'`
 
 ## How to use it
