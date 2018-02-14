@@ -77,10 +77,12 @@ class Morse:
 			"""
 		if morse is not None and words is not None:
 			raise ValueError('can only pass in words or morse, not both!')
-		if morse is not None:
+		elif morse is not None:
 			self.__read_morse(morse)
-		if words is not None:
+		elif words is not None:
 			self.__read_words(words)
+		else:
+			raise ValueError('The read function requires either a morse or alphnumeric input string!')
 
 	def __read_morse(self, morse):
 		#split morse into words
@@ -105,14 +107,14 @@ class Morse:
 
 	@property
 	def morse(self):
-		# make the morse code callable via x.morse, show the formatted string
+		""" the morse code message attribute """
 		try:
 			return ' / '.join([' '.join(x) for x in self.__morse])
 		except:
 			raise ValueError('no message stored in the object')
 	@property
 	def words(self):
-		# make the words callable via x.words, show the formatted string 
+		""" the alphanumeric message attribute """
 		try:
 			return ' '.join([''.join(x) for x in self.__words])
 		except:
