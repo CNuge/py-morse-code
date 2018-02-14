@@ -4,7 +4,7 @@ from morse import Morse, DotDash #assuming you are working in the same directory
 test = 'sos, we are going down!'
 morse_test = Morse()
 morse_test.words #this throws a value error, no message yet
-morse_test.read_words(test) # read in the string test
+morse_test.read(words = test) # read in the string test
 morse_test.words #show the words
 morse_test.morse #show the morse code
 print(morse_test) #show the pretty print version of the message
@@ -23,8 +23,8 @@ print(morse_test2)
 test3 = 'not cam'
 morse_test3 = Morse(words = test3, morse='... --- ...') #ValueError - can only do one at a time!
 morse_test3 = Morse()
-morse_test3.read(words='cam') #the other read method
-morse_test3.words
+morse_test3.read(words='cam') #the read method
+morse_test3.words = 'dave' #this throws an attribute error so you don't overwrite your message unless you really want to!
 morse_test3.read(words = 'dave') #change the message
 morse_test3.words
 morse_test3.morse
