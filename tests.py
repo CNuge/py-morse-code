@@ -11,9 +11,9 @@ class MorseCodeTests(unittest.TestCase):
 		self.morse_test1 = Morse(morse = '... --- ... / .----')
 		self.morse_test2 = Morse(words = 'You... never did! - The Kenosha Kid')
 		self.morse_test3 = Morse()
-		self.morse_test3.read_words('cam was here')
+		self.morse_test3.read(words='cam was here')
 		self.morse_test4 = Morse()
-		self.morse_test4.read_morse('-.-. .- -- / -. ..- --. . -. -')
+		self.morse_test4.read(morse='-.-. .- -- / -. ..- --. . -. -')
 		self.morse_test5 = Morse()
 		self.morse_test5.read(morse = '... --- ...')
 

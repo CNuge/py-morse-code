@@ -33,17 +33,11 @@ morse_test = Morse(morse = '- .... .. ... / .. ... / .- / - . ... -')
 
 ```
 
-Once the Morse class is instantiated, words or morse can be read in using the following functions. The two syntaxes are equivalent so its a matter of style which you choose. Note if there is already a message stored in the class then these functions will overwrite it!
+Once the Morse class is instantiated, words or morse can be read in using the following function. Note if there is already a message stored in the class then the read function will overwrite it!
 ```
 morse_test.read(morse = '- .... .. ... / .. ... / .- / - . ... -')
 
 morse_test.read(words = 'This is a test')
-
-#or alternatively
-
-morse_test.read_morse('- .... .. ... / .. ... / .- / - . ... -')
-
-morse_test.read_words('This is a test')
 
 ```
 

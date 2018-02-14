@@ -45,6 +45,8 @@ class Morse:
 	""" This class can be used to translate messages between morse code and alphanumeric encodings.
 		The class can also be used to play the morse code sounds associated with the message (all platforms)
 		and read the message out loud (mac/linux only).
+
+		A message can be read in when the class is initiated, or afterwards using the .read() function.
 	"""
 	def __init__(self, morse = None, words = None):
 		self.__letter_to_morse = {'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.',
@@ -61,21 +63,27 @@ class Morse:
 		self.read(morse, words)
 
 	def read(self, morse = None, words = None):
-		""" take in a message in morse or alphanumeric encoding,
-			store within the object """
+		""" Take in a message in morse or alphanumeric encoding,
+			store it within the object.
+			
+			Morse code is read into the class as a string.
+			format should be spaces between letters,
+			and a forward slash / between words:
+			'... --- ... ' #is equivalent to: 'sos'
+			'-.-. .- -- / -. ..- --. . ' #is equivalent to: cam nuge 
+
+			words are read into the class as a string.
+			The message is converted to lower case.
+			"""
 		if morse is not None and words is not None:
 			raise ValueError('can only pass in words or morse, not both!')
 		if morse is not None:
-			self.read_morse(morse)
+			self.__read_morse(morse)
 		if words is not None:
-			self.read_words(words)
+			self.__read_words(words)
 
-	def read_morse(self, morse):
-		""" read morse code into the class as a string.
-			format should be spaces between letters,
-			forward slash / between words:
-			'... --- ... ' #sos
-			'-.-. .- -- / -. ..- --. . ' #cam nuge """
+	def __read_morse(self, morse):
+		#split morse into words
 		morse_words = morse.split('/')
 		self.__morse = [x.split() for x in morse_words]
 		# pass the list of words to the converter and store words
@@ -83,10 +91,7 @@ class Morse:
 								for word in self.__morse]
 		self.__words = words_from_morse
 
-	def read_words(self, words):
-		""" read words into the class as a string.
-			message is converted to lower case.
-			all punctuation is recorded as periods."""
+	def __read_words(self, words):
 		# remove the punctuation, convert to lower case
 		words = re.sub(r'[^\w\s]','', words.lower())
 		# split on whitespace
@@ -100,18 +105,26 @@ class Morse:
 
 	@property
 	def morse(self):
-		""" make the morse code callable via x.morse, show the formatted string """
+		# make the morse code callable via x.morse, show the formatted string
 		try:
 			return ' / '.join([' '.join(x) for x in self.__morse])
 		except:
 			raise ValueError('no message stored in the object')
 	@property
 	def words(self):
-		""" make the words callable via x.words, show the formatted string """
+		# make the words callable via x.words, show the formatted string 
 		try:
 			return ' '.join([''.join(x) for x in self.__words])
 		except:
 			raise ValueError('no message stored in the object')
+
+	@morse.setter
+	def morse(self, value):
+		raise AttributeError('To overwrite the stored message, use the Morse.read() function!')
+
+	@words.setter
+	def words(self, value):
+		raise AttributeError('To overwrite the stored message, use the Morse.read() function!')
 
 	def transmit(self):
 		""" when called, this function makes the sound for the morse code message"""
