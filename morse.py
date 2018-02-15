@@ -77,9 +77,9 @@ class Morse:
 			"""
 		if morse is not None and words is not None:
 			raise ValueError('can only pass in words or morse, not both!')
-		elif morse is not None:
+		if morse is not None:
 			self.__read_morse(morse)
-		elif words is not None:
+		if words is not None:
 			self.__read_words(words)
 
 	def __read_morse(self, morse):
