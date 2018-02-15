@@ -81,8 +81,6 @@ class Morse:
 			self.__read_morse(morse)
 		elif words is not None:
 			self.__read_words(words)
-		else:
-			raise ValueError('The read function requires either a morse or alphnumeric input string!')
 
 	def __read_morse(self, morse):
 		#split morse into words
