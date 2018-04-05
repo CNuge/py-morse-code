@@ -43,16 +43,16 @@ class DotDash:
 
 
 def morse_arg_validate(func):
-	
-		def validated(*args, **kwargs):
-			try:
-				result = func(*args, **kwargs)
-				return result
-			except:
-				raise TypeError('you must specify whether the message you are passing in is in words or morse format!\n'+\
-								'example: .read(words="message") or .read(morse="... --- ..."')
-				
-		return validated
+	""" This decorator passes a more descriptive error message when the user
+		fails to pass the message in using a keyword argument """	
+	def validated(*args, **kwargs):
+		try:
+			result = func(*args, **kwargs)
+			return result
+		except TypeError:
+			raise TypeError('you must specify whether the message you are passing in is in words or morse format!\n'+\
+							'example: .read(words="message") or .read(morse="... --- ..."')				
+	return validated
 
 
 class Morse:
