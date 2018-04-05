@@ -42,7 +42,7 @@ class DotDash:
 
 
 
-def morse_arg_validate(func):
+def morse_kwarg_validate(func):
 	""" This decorator passes a more descriptive error message when the user
 		fails to pass the message in using a keyword argument """	
 	def validated(*args, **kwargs):
@@ -77,7 +77,7 @@ class Morse:
 		x.read(words = "sos help me!") #overwrite the stored message by passing in words
 
 	"""
-	@morse_arg_validate
+	@morse_kwarg_validate
 	def __init__(self, *, morse = None, words = None):
 		self.__letter_to_morse = {'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.',
 			  'f': '..-.', 'g': '--.', 'h': '....', 'i': '..', 'j': '.---',
@@ -92,7 +92,7 @@ class Morse:
 
 		self.read(morse = morse, words = words)
 
-	@morse_arg_validate
+	@morse_kwarg_validate
 	def read(self, *, morse = None, words = None):
 		""" Take in a message in morse or alphanumeric encoding,
 			store it within the object.
