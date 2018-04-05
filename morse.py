@@ -51,7 +51,7 @@ def morse_kwarg_validate(func):
 			return result
 		except TypeError:
 			raise TypeError('you must specify whether the message you are passing in is in words or morse format!\n'+\
-							'example: .read(words="message") or .read(morse="... --- ..."')				
+							'example: .read(words="message") or .read(morse="... --- ...")')				
 	return validated
 
 
