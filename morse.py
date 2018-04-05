@@ -42,13 +42,28 @@ class DotDash:
 
 
 class Morse:
-	""" This class can be used to translate messages between morse code and alphanumeric encodings.
+	""" The Morse class can be used to translate messages between morse code and alphanumeric encodings.
 		The class can also be used to play the morse code sounds associated with the message (all platforms)
 		and read the message out loud (mac/linux only).
 
 		A message can be read in when the class is initiated, or afterwards using the .read() function.
+		The message must be passed in using one of the two keyword arguments: morse or words
+
+		example:
+		x = Morse(words = "this is a message")
+
+		x.morse # get the morse for the message
+		x.words # get the words for the message
+		x # calling the variable will return both the morse and alphanumeric encodings
+
+		x.transmit() # have the morse code DotDash representation of the message play
+		x.speak() #MAC/Linux have the message spoken
+
+		x.read(morse = "... --- ...") #overwrite the stored message by passing in morse
+		x.read(words = "sos help me!") #overwrite the stored message by passing in words
+
 	"""
-	def __init__(self, morse = None, words = None):
+	def __init__(self, *, morse = None, words = None):
 		self.__letter_to_morse = {'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.',
 			  'f': '..-.', 'g': '--.', 'h': '....', 'i': '..', 'j': '.---',
 			  'k': '-.-', 'l': '.-..', 'm': '--', 'n': '-.', 'o': '---',
@@ -60,11 +75,16 @@ class Morse:
 		#dict comprehension to reverse the key, value hash
 		self.__morse_to_letter = {v : k for k, v in self.__letter_to_morse.items()}		
 
-		self.read(morse, words)
+		self.read(morse = morse, words = words)
 
-	def read(self, morse = None, words = None):
+	def read(self, *, morse = None, words = None):
 		""" Take in a message in morse or alphanumeric encoding,
 			store it within the object.
+			The message type must be explicity declared as either morse or words:
+			
+			x = Morse()
+			x.read(morse = "... --- ...") 
+			x.read(words = "sos help me!")
 			
 			Morse code is read into the class as a string.
 			format should be spaces between letters,
