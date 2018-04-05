@@ -41,6 +41,20 @@ class DotDash:
 		self.p.terminate()
 
 
+
+def morse_arg_validate(func):
+	
+		def validated(*args, **kwargs):
+			try:
+				result = func(*args, **kwargs)
+				return result
+			except:
+				raise TypeError('you must specify whether the message you are passing in is in words or morse format!\n'+\
+								'example: .read(words="message") or .read(morse="... --- ..."')
+				
+		return validated
+
+
 class Morse:
 	""" The Morse class can be used to translate messages between morse code and alphanumeric encodings.
 		The class can also be used to play the morse code sounds associated with the message (all platforms)
@@ -63,6 +77,7 @@ class Morse:
 		x.read(words = "sos help me!") #overwrite the stored message by passing in words
 
 	"""
+	@morse_arg_validate
 	def __init__(self, *, morse = None, words = None):
 		self.__letter_to_morse = {'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.',
 			  'f': '..-.', 'g': '--.', 'h': '....', 'i': '..', 'j': '.---',
@@ -77,6 +92,7 @@ class Morse:
 
 		self.read(morse = morse, words = words)
 
+	@morse_arg_validate
 	def read(self, *, morse = None, words = None):
 		""" Take in a message in morse or alphanumeric encoding,
 			store it within the object.
@@ -171,5 +187,3 @@ class Morse:
 	def __repr__(self):
 		""" when print is called, show the morse code underneath the words """
 		return f'message: {self.words}\n{self.morse}'
-
-
