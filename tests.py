@@ -27,6 +27,11 @@ class MorseCodeTests(unittest.TestCase):
 		with self.assertRaises(ValueError):
 			self.morse_test5.read(words= 'we are passing two things ', morse = '... --- ...')
 
+	def test_no_kwargs(self):
+		""" make sure a TypeError is raised if no keyword passed in with argument"""
+		with self.assertRaises(TypeError):
+			self.morse_test3.read('passing in a positional argument should fail')
+
 	def test_properties(self):
 		""" make sure we can't overwrite the stored strings """
 		with self.assertRaises(AttributeError):
