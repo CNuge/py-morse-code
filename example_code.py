@@ -2,6 +2,7 @@
 from morse import Morse, DotDash #assuming you are working in the same directory as the morse.py file (or it is on the search path)
 
 test = 'sos, we are going down!'
+test
 morse_test = Morse()
 morse_test.words #this throws a value error, no message yet
 morse_test.read(words = test) # read in the string test
